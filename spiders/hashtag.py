@@ -55,7 +55,8 @@ class InstagramSpider(scrapy.Spider):
         for edge in edges:
             node = edge['node']
             shortcode = node['shortcode']
-            self.checkAlreadyScraped(shortcode)
+            if(self.checkAlreadyScraped(shortcode)):
+                return
             yield scrapy.Request("https://www.instagram.com/p/"+shortcode+"/?__a=1", callback=self.parse_post)
 
         if has_next:
@@ -64,9 +65,8 @@ class InstagramSpider(scrapy.Spider):
 
 
     def checkAlreadyScraped(self,shortcode):
-        if self.last_crawled == shortcode:
-            raise CloseSpider('Reached checkpoint')
-
+        return self.last_crawled == shortcode
+           
     def parse_post(self, response):
         graphql = json.loads(response.text)
         media = graphql['graphql']['shortcode_media']
