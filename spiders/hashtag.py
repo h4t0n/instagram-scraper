@@ -73,7 +73,7 @@ class InstagramSpider(scrapy.Spider):
         location = media.get('location', {})
         if location is not None:
             loc_id = location.get('id', 0)
-            request = scrapy.Request("https://www.instagram.com/explore/locations/"+location['id']+"/?__a=1", callback=self.parse_post_location, dont_filter=True)
+            request = scrapy.Request("https://www.instagram.com/explore/locations/"+loc_id+"/?__a=1", callback=self.parse_post_location, dont_filter=True)
             request.meta['media'] = media
             yield request
         else:
