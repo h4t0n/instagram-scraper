@@ -1,6 +1,6 @@
 # Instagram Scrapy Scraper
 
-> Sgit remote add origin 
+> Some scrapy spiders useful to crawl instagram posts using public APIS (No TOKEN)
 
 ## Requirements
 - Python
@@ -30,5 +30,4 @@ For example :
 ```
 
 ## License
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
+GNU GENERAL PUBLIC LICENSE Version 3
